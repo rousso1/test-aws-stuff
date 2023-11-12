@@ -1,5 +1,5 @@
-import AWS from 'aws-sdk';
-const s3 = new AWS.S3();
+import { S3 } from "@aws-sdk/client-s3";
+const s3 = new S3();
 
 const handler = async () => {
   // Extract data from the API Gateway request
@@ -17,7 +17,7 @@ const handler = async () => {
     };
 
     // Upload the JSON data to the S3 bucket
-    await s3.putObject(s3Params).promise();
+    await s3.putObject(s3Params);
 
     const response = {
       statusCode: 200,
