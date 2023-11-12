@@ -6,7 +6,8 @@ async function uploadFileToS3() {
   const messageId = Math.random().toString().substring(2);
   const timestamp = new Date().getTime();
   const s3Key = `/test/channels/${channelId}/message/${messageId}/${timestamp}/1/1.json`;
-  const requestBody = { a: 1, b: 'bbb', usedS3Key: s3Key };
+  const body = { a: 1, b: 'bbb', usedS3Key: s3Key };
+  const requestBody = Buffer.from(JSON.stringify(body));
 
   const s3Client = new S3Client({ region: 'eu-central-1' });
 
