@@ -2,14 +2,13 @@ import AWS from 'aws-sdk';
 const s3 = new AWS.S3();
 
 const handler = async () => {
+  // Extract data from the API Gateway request
+  const requestBody = { a: 1, b: 'bbb', c: 'sample' };
+  const channelId = Math.random().toString().substring(2);
+  const messageId = Math.random().toString().substring(2);
+  const timestamp = new Date().getTime();
+  const s3Key = `/test/channels/${channelId}/message/${messageId}/${timestamp}/1/1.json`;
   try {
-    // Extract data from the API Gateway request
-    const requestBody = JSON.parse({ a: 1, b: 'bbb', c: 'sample' });
-    const channelId = Math.random().toString().substring(2);
-    const messageId = Math.random().toString().substring(2);
-    const timestamp = new Date().getTime();
-    const s3Key = `/test/channels/${channelId}/message/${messageId}/${timestamp}/1/1.json`;
-
     // Create parameters for the S3 PutObject operation
     const s3Params = {
       Bucket: 'ej-data-lake',
