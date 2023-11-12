@@ -2,6 +2,7 @@
   "name": "test-aws-stuff",
   "version": "1.0.0",
   "main": "index.js",
+  "type": "module",
   "repository": "git@github.com:rousso1/test-aws-stuff.git",
   "author": "Eitan Rousso <rousso@gmail.com>",
   "license": "MIT",
